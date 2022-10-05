@@ -1,3 +1,32 @@
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Inter-Regular.woff2?v=3.19") format("woff2"),
+       url("Inter-Regular.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("Inter-Bold.woff2?v=3.19") format("woff2"),
+       url("Inter-Bold.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("Inter-Black.woff2?v=3.19") format("woff2"),
+       url("Inter-Black.woff?v=3.19") format("woff");
+}
+
+
+
 .page {
   margin: 0 auto;
   background: #000000;
@@ -44,7 +73,10 @@
   font-style: normal;
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+}
+
+.profile__name-info {
+  display: flex;
 }
 
 .profile__name {
@@ -54,6 +86,17 @@
   line-height: 48px;
 }
 
+.profile__edit_button {
+  margin: 15px 0 0 18px;
+  width: 24px;
+  height: 24px;
+  background-image: url(./images/Edit-Button-min.svg);
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
+}
+
 .profile__text {
   margin: 16px 0 0;
   font-weight: 400;
@@ -61,14 +104,15 @@
   line-height: 22px;
 }
 
-.profile__edit_button {
-  margin-left: 18px;
-  width: 24px;
-}
-
 .profile__add_button {
-  margin-top: 25px;
+  margin-top: 35px;
   width: 150px;
+  height: 50px;
+  background-image: url(./images/Add-Button-min.svg);
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
 }
 
 
@@ -111,9 +155,14 @@
 }
 
 .element__group {
-  max-width: 22px;
+  width: 22px;
   height: 19px;
   align-self: center;
+  background-image: url(./images/Vector-min.svg);
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
 }
 
 
