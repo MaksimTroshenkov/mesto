@@ -95,6 +95,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   border: 0;
+  cursor: pointer;
 }
 
 .profile__text {
@@ -234,6 +235,7 @@
   background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .popup__title {
