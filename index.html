@@ -7,81 +7,94 @@
     <link rel="stylesheet" href="./normalize.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./vendor/fonts.css">
+    <script defer src="./style.js"></script>
   </head>
   
-<body>
-  <div class="page">
-    <header class="header">
-      <div class="header__logo"></div>
-    </header>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header__logo"></div>
+      </header>
 
-    <main class="content">
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avatar-min.jpg" alt="ваш аватар">
-        <div class="profile__info">
-          <div class="profile__name-info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit_button"></button>
+      <main class="content">
+        <section class="profile">
+          <img class="profile__avatar" src="./images/avatar-min.jpg" alt="ваш аватар">
+          <div class="profile__info">
+            <div class="profile__name-info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"></button>
+            </div>
+            <p class="profile__text">Исследователь океана</p>
           </div>
-          <p class="profile__text">Исследователь океана</p>
+          <button class="profile__add-button"></button>
+        </section>
+
+        <section class="elements">
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group element__group_button"></button>
+            </div>
+          </div>
+
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group"></button>
+            </div>
+          </div>
+
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group"></button>
+            </div>
+          </div>
+
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group"></button>
+            </div>
+          </div>
+
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group"></button>
+            </div>
+          </div>
+
+          <div class="element">
+            <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
+            <div class="element__container">
+              <p class="element__text">Карачаевск</p>
+              <button class="element__group"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__project-name">© 2020 Mesto Russia</p>
+      </footer>
+
+      <section class="popup popup_active_class">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <button class="popup__close" type="button"></button>
+          <form class="popup__form">
+            <input class="popup__name" type="text">
+            <input class="popup__text" type="text">
+            <button class="popup__submit" type="submit">Сохранить</button>
+          </form>
         </div>
-        <button class="profile__add_button"></button>s
       </section>
-
-      <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" src="./images/kirill-pershin-min.png" alt="фотография">
-          <div class="element__container">
-            <p class="element__text">Карачаевск</p>
-            <button class="element__group"></button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__project-name">© 2020 Mesto Russia</p>
-    </footer>
-
-  </div>
-</body>
+    </div>
+  </body>
+</html>

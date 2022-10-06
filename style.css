@@ -86,7 +86,7 @@
   line-height: 48px;
 }
 
-.profile__edit_button {
+.profile__edit-button {
   margin: 15px 0 0 18px;
   width: 24px;
   height: 24px;
@@ -104,7 +104,7 @@
   line-height: 22px;
 }
 
-.profile__add_button {
+.profile__add-button {
   margin-top: 35px;
   width: 150px;
   height: 50px;
@@ -152,6 +152,9 @@
   font-size: 24px;
   line-height: 29px;
   color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .element__group {
@@ -181,4 +184,111 @@
   font-size: 18px;
   line-height: 22px;
   color: #545454;
+}
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 195px 425px;
+  box-sizing: border-box;
+  display: none;
+}
+
+.popup_active {
+  display: flex;
+}
+
+.popup__container {
+  width: 100%;
+  max-width: 430px;
+  padding: 34px 36px 37px 36px;
+  min-height: 330px;
+  position: relative;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  color:#000;
+  font-family: 'Inter';
+  font-style: normal;
+  box-sizing: border-box;
+}
+
+.popup__close {
+  background-image: url(./images/Close-Icon-min.svg);
+  border: none;
+  padding: 0;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: -35px;
+  right: -35px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.popup__title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: start;
+}
+
+.popup__form {
+  max-width: 358px;
+}
+
+.popup__name {
+  margin: 54px auto 0;
+  padding: 0 0 13px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.popup__text {
+  margin: 30px auto 0;
+  padding: 0 0 13px;
+  width: 100%;
+  border-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  outline: none;
+}
+
+.popup__submit {
+  margin: 48px auto 0;
+  background-image: url(./images/Close-min.svg);
+  padding: 0;
+  color: #FFF;
+  border: none;
+  position: absolute;
+  width: 358px;
+  height: 50px;
+  bottom: 37px;
+  right: 36px;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
 }
