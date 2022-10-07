@@ -81,13 +81,17 @@
 
 .profile__name {
   margin: 0;
+  margin-right: 18px;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
-  margin: 15px 0 0 18px;
+  margin: 15px 0 0;
   width: 24px;
   height: 24px;
   background-image: url(./images/Edit-Button-min.svg);
@@ -96,6 +100,7 @@
   background-repeat: no-repeat;
   border: 0;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .profile__text {
@@ -103,6 +108,9 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-button {
@@ -250,29 +258,22 @@
   max-width: 358px;
 }
 
-.popup__name {
-  margin: 54px auto 0;
+.popup__input {
+  margin: 0;
+  margin-top: 30px;
   padding: 0 0 13px;
   width: 100%;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  outline: none;
   border: 0;
+  outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
+  gap: 30px;
 }
 
-.popup__text {
-  margin: 30px auto 0;
-  padding: 0 0 13px;
-  width: 100%;
-  border-style: none;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
-  outline: none;
+.popup__input:first-of-type {
+  margin-top: 54px;
 }
 
 .popup__submit {
@@ -293,4 +294,5 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
+  border-radius: 2px;
 }
