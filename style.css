@@ -283,9 +283,10 @@
   align-self: center;
   background-image: url(./images/Vector-min.svg);
   background-color: transparent;
-  background-size: cover;
+  background-size: 22px;
   background-repeat: no-repeat;
   border: 0;
+  cursor: pointer;
 }
 
 
