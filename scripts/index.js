@@ -3,7 +3,7 @@ const POPUP_ACTIVE_CLASS = "popup_active";
 const openFormBtn = document.querySelector(".profile__edit-button");
 const popup = document.querySelector(".popup");
 const popupContainer = document.querySelector(".popup__container");
-const popupCloseBtn = document.querySelector(".popup__close");
+const popupCloseBtn = document.querySelector(".popup__close-button");
 
 const popupForm = document.querySelector(".popup__form");
 const submitBtn = document.querySelector(".popup__submit");

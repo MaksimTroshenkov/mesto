@@ -1,0 +1,22 @@
+.elements {
+  margin: 51px auto 0;
+  max-width: 880px;
+  gap: 20px 17px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 920px) {
+  .elements {
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .elements {
+    margin-top: 36px;
+    max-width: 282px;
+    display: grid;
+    grid-template-rows: 1fr;
+  }
+}
