@@ -23,8 +23,8 @@ popup.addEventListener("click", (event) => {
 });
 
 function defoult () {
-  nameInput.value = profileName;
-  textInput.value = profileText;
+  nameInput.value = profileName.innerText;
+  textInput.value = profileText.innerText;
 }
 defoult ();
 
