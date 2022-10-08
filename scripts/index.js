@@ -22,11 +22,11 @@ popup.addEventListener("click", (event) => {
   }
 });
 
-function defoult () {
+function start () {
   nameInput.value = profileName.innerText;
   textInput.value = profileText.innerText;
 }
-defoult ();
+start ();
 
 function addForm (evt) {
   evt.preventDefault();
