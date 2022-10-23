@@ -52,6 +52,10 @@ const list = document.querySelector(".element");
 const template = document.querySelector("#list-item-template").content.querySelector(".element__list");
 console.log(template);
 
+const formCard = document.querySelector(".popup_add-form");
+const inputTextCard = document.querySelector(".popup__input_type_name-card");
+const inputUrlCard = document.querySelector(".popup__input_type_link");
+
 
 const cards = [
   {
@@ -82,13 +86,45 @@ const cards = [
 
 const createCards = (item) => {
   const element = template.cloneNode(true);
-  list.append(element);
+  const removeBtn = element.querySelector(".card-item__action_type_delete");
 
   const cardsName = element.querySelector(".element__text");
   cardsName.textContent = item.name;
 
   const cardsUrl = element.querySelector(".element__image");
   cardsUrl.src = item.link;
+
+  removeBtn.addEventListener("click", () => removeCard(element));
+
+  list.prepend(element);
 };
 
 cards.forEach(createCards);
+
+
+const clearInput = () => {
+  newCardName.value = "";
+  newCardUrl.value = "";
+};
+
+
+const formCardSubmit = (event) => {
+  event.preventDefault();
+
+  const newCardName = inputTextCard.value;
+  const newCardUrl = inputUrlCard.value;
+
+  createCards({
+    text: newCardName,
+    link: newCardUrl,
+  });
+
+  clearInput();
+}
+
+
+const removeCard = (element) => {
+  element.remove();
+}
+
+formCardSubmit.addEventListener("submit", formCardSubmit);
