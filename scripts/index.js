@@ -3,7 +3,7 @@ const POPUP_ACTIVE_CLASS = "popup_active";
 const openFormBtn = document.querySelector(".profile__edit-button");
 const popup = document.querySelector(".popup_edit-form");
 const popupContainer = document.querySelector(".popup__container");
-const popupCloseBtn = document.querySelector(".popup__close-button");
+const popupCloseBtn = document.querySelectorAll(".popup__close-button");
 
 const popupForm = document.querySelector(".popup__form");
 const submitBtn = document.querySelector(".popup__submit");
@@ -47,14 +47,18 @@ popupForm.addEventListener("submit", addForm);
 
 
 
-
 const list = document.querySelector(".element");
 const template = document.querySelector("#list-item-template").content.querySelector(".element__list");
 console.log(template);
 
-const formCard = document.querySelector(".popup_add-form");
 const inputTextCard = document.querySelector(".popup__input_type_name-card");
-const inputUrlCard = document.querySelector(".popup__input_type_link");
+const inputUrlCard = document.querySelector(".popup__input_type_link-card");
+
+const popupFormCard = document.querySelector(".popup_cards-form");
+
+const formCard = document.querySelector(".popup_add-form");
+const openCardBtn = document.querySelector(".profile__add-button")
+
 
 
 const cards = [
@@ -84,8 +88,13 @@ const cards = [
   }
 ]; 
 
+const elementImg = document.querySelector(".element__image");
+const popupImage = document.querySelector(".popup_image");
+const popupTitle = document.querySelector(".popup__image-title");
+
 const createCards = (item) => {
   const element = template.cloneNode(true);
+
   const removeBtn = element.querySelector(".card-item__action_type_delete");
 
   const cardsName = element.querySelector(".element__text");
@@ -102,10 +111,19 @@ const createCards = (item) => {
 cards.forEach(createCards);
 
 
-const clearInput = () => {
-  newCardName.value = "";
-  newCardUrl.value = "";
-};
+
+openCardBtn.addEventListener("click", () => {
+  formCard.classList.add(POPUP_ACTIVE_CLASS);
+});
+
+function closePopup(popup) {
+  popup.classList.remove(POPUP_ACTIVE_CLASS);
+}
+
+popupCloseBtn.forEach(function(item) {
+  item.addEventListener("click", () => closePopup(popupClosePlease));
+  const popupClosePlease = item.closest('.popup');
+});
 
 
 const formCardSubmit = (event) => {
@@ -113,18 +131,25 @@ const formCardSubmit = (event) => {
 
   const newCardName = inputTextCard.value;
   const newCardUrl = inputUrlCard.value;
+  newCardUrl.alt = inputTextCard.value
 
   createCards({
-    text: newCardName,
-    link: newCardUrl,
+    name: newCardName,
+    link: newCardUrl
   });
-
-  clearInput();
+  closePopup(formCard);
 }
+
+popupFormCard.addEventListener("submit", formCardSubmit);
 
 
 const removeCard = (element) => {
   element.remove();
 }
 
-formCardSubmit.addEventListener("submit", formCardSubmit);
+
+elementImg.addEventListener("click", () => {
+  popupImage.classList.add(POPUP_ACTIVE_CLASS);
+  popupTitle.innerHTML = cardsName.innerHTML;
+  elementImg.src = cardsUrl.src;
+});
