@@ -18,7 +18,7 @@ const template = document.querySelector("#list-item-template").content.querySele
 const inputTextCard = document.querySelector(".popup__input_type_name-card");
 const inputUrlCard = document.querySelector(".popup__input_type_link-card");
 
-const popupFormCard = document.querySelector(".popup_cards_form");
+const popupFormCard = document.querySelector(".popup__form-cards");
 
 const formCard = document.querySelector(".popup_add-form");
 const openCardBtn = document.querySelector(".profile__add-button");
