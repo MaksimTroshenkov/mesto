@@ -86,6 +86,12 @@ popupImageElement.src = cardsUrl.src;
 const createCards = (item) => {
   const element = template.cloneNode(true);
 
+  const elementButton = element.querySelector(".element__button");
+
+  elementButton.addEventListener("click", () => {
+    elementButton.classList.toggle("element__button_active");
+  });
+
   const removeBtn = element.querySelector(".card-item__action_type_delete");
 
   const cardsName = element.querySelector(".element__text");
@@ -93,6 +99,7 @@ const createCards = (item) => {
 
   const cardsUrl = element.querySelector(".element__image");
   cardsUrl.src = item.link;
+  cardsUrl.alt = item.name;
 
   removeBtn.addEventListener("click", () => removeCard(element));
   cardsUrl.addEventListener("click", () => handleOpenCardPhoto(cardsName, cardsUrl))
@@ -101,7 +108,6 @@ const createCards = (item) => {
 };
 
 cards.forEach(createCards);
-
 
 
 openCardBtn.addEventListener("click", () => {
@@ -123,12 +129,12 @@ const formCardSubmit = (event) => {
 
   const newCardName = inputTextCard.value;
   const newCardUrl = inputUrlCard.value;
-  newCardUrl.alt = inputTextCard.value
 
   createCards({
     name: newCardName,
     link: newCardUrl
   });
+  
   closePopup(formCard);
 }
 
