@@ -12,6 +12,21 @@ const profileText = document.querySelector(".profile__text");
 const nameInput = document.querySelector(".popup__input_type_name");
 const textInput = document.querySelector(".popup__input_type_text");
 
+const list = document.querySelector(".element");
+const template = document.querySelector("#list-item-template").content.querySelector(".element__list");
+
+const inputTextCard = document.querySelector(".popup__input_type_name-card");
+const inputUrlCard = document.querySelector(".popup__input_type_link-card");
+
+const popupFormCard = document.querySelector(".popup_cards-form");
+
+const formCard = document.querySelector(".popup_add-form");
+const openCardBtn = document.querySelector(".profile__add-button");
+
+const popupImage = document.querySelector(".popup_image");
+const popupTitle = document.querySelector(".popup__image-title");
+const popupImageElement = document.querySelector(".popup__image");
+
 function start () {
   nameInput.value = profileName.innerText;
   textInput.value = profileText.innerText;
@@ -34,32 +49,6 @@ function addForm (evt) {
   profileText.innerText = textInput.value;
 }
 popupForm.addEventListener("submit", addForm);
-
-
-
-
-
-
-
-
-
-
-
-
-
-const list = document.querySelector(".element");
-const template = document.querySelector("#list-item-template").content.querySelector(".element__list");
-console.log(template);
-
-const inputTextCard = document.querySelector(".popup__input_type_name-card");
-const inputUrlCard = document.querySelector(".popup__input_type_link-card");
-
-const popupFormCard = document.querySelector(".popup_cards-form");
-
-const formCard = document.querySelector(".popup_add-form");
-const openCardBtn = document.querySelector(".profile__add-button")
-
-
 
 const cards = [
   {
@@ -88,9 +77,11 @@ const cards = [
   }
 ]; 
 
-const elementImg = document.querySelector(".element__image");
-const popupImage = document.querySelector(".popup_image");
-const popupTitle = document.querySelector(".popup__image-title");
+const handleOpenCardPhoto = (cardsName, cardsUrl) => {
+popupImage.classList.add(POPUP_ACTIVE_CLASS);
+popupTitle.innerHTML = cardsName.innerHTML;
+popupImageElement.src = cardsUrl.src;
+}; 
 
 const createCards = (item) => {
   const element = template.cloneNode(true);
@@ -104,6 +95,7 @@ const createCards = (item) => {
   cardsUrl.src = item.link;
 
   removeBtn.addEventListener("click", () => removeCard(element));
+  cardsUrl.addEventListener("click", () => handleOpenCardPhoto(cardsName, cardsUrl))
 
   list.prepend(element);
 };
@@ -146,10 +138,3 @@ popupFormCard.addEventListener("submit", formCardSubmit);
 const removeCard = (element) => {
   element.remove();
 }
-
-
-elementImg.addEventListener("click", () => {
-  popupImage.classList.add(POPUP_ACTIVE_CLASS);
-  popupTitle.innerHTML = cardsName.innerHTML;
-  elementImg.src = cardsUrl.src;
-});
