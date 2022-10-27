@@ -42,12 +42,6 @@ openProfileBtn.addEventListener("click", () => {
   setInputValues ();
 });
 
-profilePopup.addEventListener("click", (event) => {
-  if(!popupContainer.contains(event.target) || event.target === popupCloseButtons || event.target === submitBtn) {
-    profilePopup.classList.remove(POPUP_ACTIVE_CLASS);
-  }
-});
-
 function addForm (evt) {
   evt.preventDefault();
   profileName.innerText = nameInput.value;
@@ -120,9 +114,9 @@ openCardBtn.addEventListener("click", () => {
   openPopup(formCard);
 });
 
-function closePopup(profilePopup) {
-  profilePopup.classList.remove(POPUP_ACTIVE_CLASS);
-}
+function closePopup(element) {
+  element.classList.remove(POPUP_ACTIVE_CLASS);
+};
 
 popupCloseButtons.forEach(function(item) {
   item.addEventListener("click", () => closePopup(popupClosePlease));
@@ -130,7 +124,7 @@ popupCloseButtons.forEach(function(item) {
 });
 
 
-const handleCardFormSubmit = (event) => {
+const handleCardFormSubmit = ("click", (event) => {
   event.preventDefault();
 
   const newCardName = inputTextCard.value;
@@ -141,8 +135,8 @@ const handleCardFormSubmit = (event) => {
     link: newCardUrl
   });
   
-  closePopup(formCard);
-}
+  closePopup(formCard); 
+});
 
 popupFormCard.addEventListener("submit", handleCardFormSubmit);
 
