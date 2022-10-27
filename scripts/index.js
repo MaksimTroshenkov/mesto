@@ -1,6 +1,7 @@
 const POPUP_ACTIVE_CLASS = "popup_active";
+const popup = document.querySelector(".popup");
 
-const openFormBtn = document.querySelector(".profile__edit-button");
+const openProfileBtn = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector('.popup_edit-form');
 const popupContainer = document.querySelector(".popup__container");
 const popupCloseButtons = document.querySelectorAll(".popup__close-button");
@@ -27,14 +28,17 @@ const popupImage = document.querySelector(".popup_image");
 const popupTitle = document.querySelector(".popup__image-title");
 const popupImageElement = document.querySelector(".popup__image");
 
+function openPopup(popup) {
+  popup.classList.add(POPUP_ACTIVE_CLASS);
+}
 
 function setInputValues () {
   nameInput.value = profileName.innerText;
   textInput.value = profileText.innerText;
 }
 
-openFormBtn.addEventListener("click", () => {
-  profilePopup.classList.add(POPUP_ACTIVE_CLASS);
+openProfileBtn.addEventListener("click", () => {
+  openPopup(profilePopup);
   setInputValues ();
 });
 
@@ -113,7 +117,7 @@ cards.forEach(createCards);
 
 
 openCardBtn.addEventListener("click", () => {
-  formCard.classList.add(POPUP_ACTIVE_CLASS);
+  openPopup(formCard);
 });
 
 function closePopup(profilePopup) {
