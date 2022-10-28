@@ -46,7 +46,7 @@ function addForm (evt) {
   evt.preventDefault();
   profileName.innerText = nameInput.value;
   profileText.innerText = textInput.value;
-  closePopup(popup);
+  closePopup(profilePopup);
 }
 popupForm.addEventListener("submit", addForm);
 
