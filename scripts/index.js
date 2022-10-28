@@ -77,20 +77,17 @@ const cards = [
 ]; 
 
 const handleOpenCardPhoto = (cardsName, cardsUrl) => {
-popupImage.classList.add(POPUP_ACTIVE_CLASS);
+openPopup(popupImage);
 popupTitle.textContent = cardsName.textContent;
 popupImageElement.src = cardsUrl.src;
 popupImageElement.alt = cardsName.textContent;
 }; 
 
-const createCards = (item) => {
+
+
+const copyCards = (item) => {
   const element = template.cloneNode(true);
-
   const elementButton = element.querySelector(".element__button");
-
-  elementButton.addEventListener("click", () => {
-    elementButton.classList.toggle("element__button_active");
-  });
 
   const removeBtn = element.querySelector(".card-item__action_type_delete");
 
@@ -104,11 +101,16 @@ const createCards = (item) => {
   removeBtn.addEventListener("click", () => removeCard(element));
   cardsUrl.addEventListener("click", () => handleOpenCardPhoto(cardsName, cardsUrl))
 
-  list.prepend(element);
+  elementButton.addEventListener("click", () => {
+    elementButton.classList.toggle("element__button_active");
+  });
+
+  return(element);
 };
 
-cards.forEach(createCards);
-
+cards.forEach(element => {
+  list.append(copyCards(element));
+});
 
 openCardBtn.addEventListener("click", () => {
   openPopup(formCard);
@@ -130,10 +132,10 @@ const handleCardFormSubmit = ("click", (event) => {
   const newCardName = inputTextCard.value;
   const newCardUrl = inputUrlCard.value;
 
-  createCards({
+  list.prepend(copyCards({
     name: newCardName,
     link: newCardUrl
-  });
+  }));
   
   closePopup(formCard); 
 });
