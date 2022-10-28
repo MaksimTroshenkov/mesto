@@ -109,7 +109,7 @@ const copyCards = (item) => {
 };
 
 cards.forEach(element => {
-  list.append(copyCards(element));
+  list.prepend(copyCards(element));
 });
 
 openCardBtn.addEventListener("click", () => {
