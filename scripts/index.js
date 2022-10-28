@@ -46,6 +46,7 @@ function addForm (evt) {
   evt.preventDefault();
   profileName.innerText = nameInput.value;
   profileText.innerText = textInput.value;
+  closePopup(popup);
 }
 popupForm.addEventListener("submit", addForm);
 
@@ -136,7 +137,9 @@ const handleCardFormSubmit = ("click", (event) => {
     name: newCardName,
     link: newCardUrl
   }));
-  
+
+  event.target.reset();
+
   closePopup(formCard); 
 });
 
