@@ -17,6 +17,20 @@
   margin-top: 54px;
 }
 
+.popup__input.popup__input_type_error {
+  outline: 0;
+  border-color: red;
+}
+
+.popup__input-error_active {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+}
+
 @media screen and (max-width: 920px) {
   .popup__input:first-of-type {
     margin-top: 75px;
