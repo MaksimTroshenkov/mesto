@@ -1,28 +1,28 @@
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (config, formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (config, formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (config, formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(config, formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(config, formElement, inputElement);
   }
 };
 
-const toggleButtonState = (inputList, form) => {
+const toggleButtonState = (config, inputList, form) => {
   const buttonElement = form.querySelector(config.submitButtonSelector);
-  if (hasInvalidInput(inputList)) {
+  if (hasInvalidInput(config, inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
@@ -37,9 +37,9 @@ const hasInvalidInput = (inputList) => {
   });
 }; 
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (config, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  toggleButtonState(inputList, formElement);
+  toggleButtonState(config, inputList, formElement);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
