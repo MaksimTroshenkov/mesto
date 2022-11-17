@@ -37,91 +37,61 @@ popups.forEach(function(item) {
 
 function closeEscape (evt) {
   if (evt.key === 'Escape') {
-    const escape = document.querySelector('.popup_active');
-    closePopup(escape);
+    const activePopup = document.querySelector('.popup_active');
+    closePopup(activePopup);
   }
 }
 
-function setInputValues () {
+function editProfile  () {
   nameInput.value = profileName.innerText;
   textInput.value = profileText.innerText;
 }
 
 openProfileBtn.addEventListener("click", () => {
   openPopup(profilePopup);
-  setInputValues ();
+  editProfile();
 });
 
-function addForm (evt) {
+function handleFormSubmit (evt) {
   evt.preventDefault();
-  profileName.innerText = nameInput.value;
-  profileText.innerText = textInput.value;
-  evt.target.reset;
+  profileName.textContent = nameInput.value;
+  profileText.textContent = textInput.value;
   closePopup(profilePopup);
 };  
-popupForm.addEventListener("submit", addForm);
+popupForm.addEventListener("submit", handleFormSubmit);
 
-const cards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
-
-const handleOpenCardPhoto = (cardsName, cardsUrl) => {
-openPopup(popupImage);
-popupTitle.textContent = cardsName.textContent;
-popupImageElement.src = cardsUrl.src;
-popupImageElement.alt = cardsName.textContent;
+const handleOpenCardPhoto = (cardName, cardUrl) => {
+  openPopup(popupImage);
+  popupTitle.textContent = cardName.textContent;
+  popupImageElement.src = cardUrl.src;
+  popupImageElement.alt = cardName.textContent;
 }; 
 
-
-
-const copyCards = (item) => {
+const copyCard = (item) => {
   const element = template.cloneNode(true);
-  const elementButton = element.querySelector(".element__button");
+  const elementLikeBtn = element.querySelector(".element__button");
 
   const removeBtn = element.querySelector(".card-item__action_type_delete");
 
-  const cardsName = element.querySelector(".element__text");
-  cardsName.textContent = item.name;
+  const cardName = element.querySelector(".element__text");
+  cardName.textContent = item.name;
 
-  const cardsUrl = element.querySelector(".element__image");
-  cardsUrl.src = item.link;
-  cardsUrl.alt = item.name;
+  const cardUrl = element.querySelector(".element__image");
+  cardUrl.src = item.link;
+  cardUrl.alt = item.name;
 
   removeBtn.addEventListener("click", () => removeCard(element));
-  cardsUrl.addEventListener("click", () => handleOpenCardPhoto(cardsName, cardsUrl))
+  cardUrl.addEventListener("click", () => handleOpenCardPhoto(cardName, cardUrl))
 
-  elementButton.addEventListener("click", () => {
-    elementButton.classList.toggle("element__button_active");
+  elementLikeBtn.addEventListener("click", () => {
+    elementLikeBtn.classList.toggle("element__button_active");
   });
 
-  return(element);
+  return element;
 };
 
 cards.forEach(element => {
-  list.prepend(copyCards(element));
+  list.prepend(copyCard(element));
 });
 
 openCardBtn.addEventListener("click", () => {
@@ -136,22 +106,22 @@ function closePopup(element) {
 popupCloseButtons.forEach(function(item) {
   item.addEventListener("click", () => closePopup(popupClosePlease));
   const popupClosePlease = item.closest('.popup');
-});
+}); 
 
 
-const handleCardFormSubmit = ("click", (event) => {
+const handleCardFormSubmit = (event) => {
   event.preventDefault();
 
   const newCardName = inputTextCard.value;
   const newCardUrl = inputUrlCard.value;
 
-  list.prepend(copyCards({
+  list.prepend(copyCard({
     name: newCardName,
     link: newCardUrl
   }));
 
   closePopup(formCard); 
-});
+};
 
 popupFormCard.addEventListener("submit", handleCardFormSubmit);
 

@@ -1,0 +1,6 @@
+.popup__line {
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
