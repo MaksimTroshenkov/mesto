@@ -37,61 +37,64 @@ popups.forEach(function(item) {
 
 function closeEscape (evt) {
   if (evt.key === 'Escape') {
-    const activePopup = document.querySelector('.popup_active');
-    closePopup(activePopup);
+    const escape = document.querySelector('.popup_active');
+    closePopup(escape);
   }
 }
 
-function editProfile  () {
+function setInputValues () {
   nameInput.value = profileName.innerText;
   textInput.value = profileText.innerText;
 }
 
 openProfileBtn.addEventListener("click", () => {
   openPopup(profilePopup);
-  editProfile();
+  setInputValues ();
 });
 
-function handleFormSubmit (evt) {
+function addForm (evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileText.textContent = textInput.value;
+  profileName.innerText = nameInput.value;
+  profileText.innerText = textInput.value;
+  evt.target.reset;
   closePopup(profilePopup);
 };  
-popupForm.addEventListener("submit", handleFormSubmit);
+popupForm.addEventListener("submit", addForm);
 
-const handleOpenCardPhoto = (cardName, cardUrl) => {
-  openPopup(popupImage);
-  popupTitle.textContent = cardName.textContent;
-  popupImageElement.src = cardUrl.src;
-  popupImageElement.alt = cardName.textContent;
+const handleOpenCardPhoto = (cardsName, cardsUrl) => {
+openPopup(popupImage);
+popupTitle.textContent = cardsName.textContent;
+popupImageElement.src = cardsUrl.src;
+popupImageElement.alt = cardsName.textContent;
 }; 
 
-const copyCard = (item) => {
+
+
+const copyCards = (item) => {
   const element = template.cloneNode(true);
-  const elementLikeBtn = element.querySelector(".element__button");
+  const elementButton = element.querySelector(".element__button");
 
   const removeBtn = element.querySelector(".card-item__action_type_delete");
 
-  const cardName = element.querySelector(".element__text");
-  cardName.textContent = item.name;
+  const cardsName = element.querySelector(".element__text");
+  cardsName.textContent = item.name;
 
-  const cardUrl = element.querySelector(".element__image");
-  cardUrl.src = item.link;
-  cardUrl.alt = item.name;
+  const cardsUrl = element.querySelector(".element__image");
+  cardsUrl.src = item.link;
+  cardsUrl.alt = item.name;
 
   removeBtn.addEventListener("click", () => removeCard(element));
-  cardUrl.addEventListener("click", () => handleOpenCardPhoto(cardName, cardUrl))
+  cardsUrl.addEventListener("click", () => handleOpenCardPhoto(cardsName, cardsUrl))
 
-  elementLikeBtn.addEventListener("click", () => {
-    elementLikeBtn.classList.toggle("element__button_active");
+  elementButton.addEventListener("click", () => {
+    elementButton.classList.toggle("element__button_active");
   });
 
-  return element;
+  return(element);
 };
 
 cards.forEach(element => {
-  list.prepend(copyCard(element));
+  list.prepend(copyCards(element));
 });
 
 openCardBtn.addEventListener("click", () => {
@@ -106,22 +109,22 @@ function closePopup(element) {
 popupCloseButtons.forEach(function(item) {
   item.addEventListener("click", () => closePopup(popupClosePlease));
   const popupClosePlease = item.closest('.popup');
-}); 
+});
 
 
-const handleCardFormSubmit = (event) => {
+const handleCardFormSubmit = ("click", (event) => {
   event.preventDefault();
 
   const newCardName = inputTextCard.value;
   const newCardUrl = inputUrlCard.value;
 
-  list.prepend(copyCard({
+  list.prepend(copyCards({
     name: newCardName,
     link: newCardUrl
   }));
 
   closePopup(formCard); 
-};
+});
 
 popupFormCard.addEventListener("submit", handleCardFormSubmit);
 

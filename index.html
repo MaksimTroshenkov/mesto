@@ -50,30 +50,26 @@
             type="button"
           ></button>
           <form name="popup-form" class="popup__form" novalidate>
-            <div class="popup__line">
-              <input
-                placeholder="Имя"
-                name="name"
-                minlength="2"
-                maxlength="40"
-                class="popup__input popup__input_type_name"
-                id="names-input"
-                type="text"
-              />
-              <span class="popup__input-error names-input-error"></span>
-            </div>
-            <div class="popup__line">
-              <input
-                placeholder="О себе"
-                name="description"
-                minlength="2"
-                maxlength="200"
-                class="popup__input popup__input_type_text"
-                id="about-input"
-                type="text"
-              />
-              <span class="popup__input-error about-input-error"></span>
-            </div>
+            <input
+              placeholder="Имя"
+              name="name"
+              minlength="2"
+              maxlength="40"
+              class="popup__input popup__input_type_name"
+              id="names-input"
+              type="text"
+            />
+            <span class="names-input-error"></span>
+            <input
+              placeholder="О себе"
+              name="description"
+              minlength="2"
+              maxlength="200"
+              class="popup__input popup__input_type_text"
+              id="about-input"
+              type="text"
+            />
+            <span class="about-input-error"></span>
             <button class="popup__submit" type="submit" disabled>
               Сохранить
             </button>
@@ -93,30 +89,26 @@
             class="popup__form popup__form-cards"
             novalidate
           >
-            <div class="popup__line">
-              <input
-                required
-                placeholder="Название"
-                name="name"
-                minlength="2"
-                maxlength="30"
-                class="popup__input popup__input_type_name-card"
-                id="name-input"
-                type="text"
-              />
-              <span class="popup__input-error name-input-error"></span>
-            </div>
-            <div class="popup__line">
-              <input
-                required
-                type="url"
-                placeholder="Ссылка на картинку"
-                name="description"
-                class="popup__input popup__input_type_link-card"
-                id="url-input"
-              />
-              <span class="popup__input-error url-input-error"></span>
-            </div>
+            <input
+              required
+              placeholder="Название"
+              name="name"
+              minlength="2"
+              maxlength="30"
+              class="popup__input popup__input_type_name-card"
+              id="name-input"
+              type="text"
+            />
+            <span class="name-input-error"></span>
+            <input
+              required
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="description"
+              class="popup__input popup__input_type_link-card"
+              id="url-input"
+            />
+            <span class="url-input-error"></span>
             <button class="popup__submit" type="submit" disabled>
               Создать
             </button>

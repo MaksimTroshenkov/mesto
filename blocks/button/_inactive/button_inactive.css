@@ -1,5 +1,5 @@
 .button_inactive {
-  background: #FFFFFF;
+  background: #E5E5E5;
   opacity: 0.2;
   border-radius: 2px;
   border: 1px solid #000000;
@@ -8,5 +8,4 @@
 
 .button_inactive:hover {
   opacity: 0.2;
-  cursor: default;
 }
