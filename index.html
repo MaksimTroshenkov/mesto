@@ -49,8 +49,13 @@
             class="popup__close-button button-opacity"
             type="button"
           ></button>
-          <form name="popup-form" class="popup__form" novalidate>
+          <form
+            name="popup-form"
+            class="popup__form popup__form-profile"
+            novalidate
+          >
             <input
+              required
               placeholder="Имя"
               name="name"
               minlength="2"
@@ -59,8 +64,9 @@
               id="names-input"
               type="text"
             />
-            <span class="names-input-error"></span>
+            <span class="form__input-error names-input-error"></span>
             <input
+              required
               placeholder="О себе"
               name="description"
               minlength="2"
@@ -69,7 +75,7 @@
               id="about-input"
               type="text"
             />
-            <span class="about-input-error"></span>
+            <span class="form__input-error about-input-error"></span>
             <button class="popup__submit" type="submit" disabled>
               Сохранить
             </button>
@@ -99,7 +105,7 @@
               id="name-input"
               type="text"
             />
-            <span class="name-input-error"></span>
+            <span class="form__input-error name-input-error"></span>
             <input
               required
               type="url"
@@ -108,7 +114,7 @@
               class="popup__input popup__input_type_link-card"
               id="url-input"
             />
-            <span class="url-input-error"></span>
+            <span class="form__input-error url-input-error"></span>
             <button class="popup__submit" type="submit" disabled>
               Создать
             </button>

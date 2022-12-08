@@ -42,6 +42,7 @@
 @import url(../blocks/button/_inactive/button_inactive.css);
 
 @import url(../blocks/button-opacity/button-opacity.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
 
 @import url(../blocks/popup/_image/popup_image.css);
 @import url(../blocks/popup/__container__image/popup__container-image.css);
