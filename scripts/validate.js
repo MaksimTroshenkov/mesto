@@ -41,16 +41,16 @@ const setEventListeners = (config, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   toggleButtonState(config, inputList, formElement);
 
+  formElement.addEventListener("reset", () => {
+    setTimeout(() => {
+      toggleButtonState(config, inputList, formElement);
+    }, 0)
+  });
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
     checkInputValidity(config, formElement, inputElement);
     toggleButtonState(config, inputList, formElement);
-
-    formElement.addEventListener("reset", () => {
-      setTimeout(() => {
-        toggleButtonState(config, inputList, formElement);
-      }, 0);
-    })
   })
 })
 };
