@@ -1,6 +1,6 @@
-import { Card } from "./card.js";
+import { Card } from "./Card.js";
 import { cards, enableValidation } from "./cards.js";
-import { FormValidator } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
 const POPUP_ACTIVE_CLASS = "popup_active";
 const popups = document.querySelectorAll(".popup");
@@ -21,6 +21,7 @@ const popupImage = document.querySelector(".popup_image");
 const popupTitle = document.querySelector(".popup__image-title");
 const popupImageElement = document.querySelector(".popup__image");
 const body = document.querySelector(".body");
+const sumbitCard = document.querySelector(".popup__submit_type_card");
 
 const validationProfile = new FormValidator(enableValidation, popupProfileForm);
 validationProfile.enableValidation();
@@ -57,6 +58,7 @@ function setInputValuesEditProfile () {
 }
 
 openProfileBtn.addEventListener("click", () => {
+  validationProfile.resetValidation();
   openPopup(profilePopup);
   setInputValuesEditProfile();
 });
@@ -88,6 +90,7 @@ cards.forEach((item) => {
 });
 
 openCardBtn.addEventListener("click", () => {
+  validationCard.resetValidation();
   openPopup(formCard);
 });
 
@@ -108,5 +111,6 @@ const handleCardFormSubmit = (event) => {
   }));
   closePopup(formCard); 
   popupFormCard.reset();
+  validationCard.buttonOff(sumbitCard);
 };
 popupFormCard.addEventListener("submit", handleCardFormSubmit);
