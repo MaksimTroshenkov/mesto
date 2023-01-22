@@ -36,7 +36,7 @@ export class Card {
     this._elementLike = this._element.querySelector(".element__button");
 
     this._element.querySelector(".card-item__action_type_delete").addEventListener("click", () => {
-      this._element.remove();
+      this._removeElement();
     });
 
     this._elementLike.addEventListener("click", () => {
