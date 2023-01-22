@@ -111,6 +111,5 @@ const handleCardFormSubmit = (event) => {
   }));
   closePopup(formCard); 
   popupFormCard.reset();
-  validationCard.buttonOff(sumbitCard);
 };
 popupFormCard.addEventListener("submit", handleCardFormSubmit);
