@@ -33,3 +33,13 @@ export const enableValidation = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 };
+
+export const openProfileBtn = document.querySelector(".profile__edit-button");
+export const popupProfileForm = document.forms["profile-form"];
+export const nameInput = document.querySelector(".popup__input_type_name");
+export const textInput = document.querySelector(".popup__input_type_text");
+export const list = document.querySelector(".element");
+export const inputTextCard = document.querySelector(".popup__input_type_name-card");
+export const inputUrlCard = document.querySelector(".popup__input_type_link-card");
+export const popupFormCard = document.forms["card-form"];
+export const openCardBtn = document.querySelector(".profile__add-button");
