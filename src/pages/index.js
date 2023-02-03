@@ -9,22 +9,19 @@ import './index.css';
 
 
 const popupWithImage = new PopupWithImage(".popup_image");
-const handleCardClick = (name, link) => {
-  popupWithImage.setEventListener();
-  popupWithImage.open(name, link);
-};
+popupWithImage.setEventListener();
 
-function createCard(item) {
-  const card = new Card(item.name, item.link, '.list-item-template', handleCardClick);
+const createCard = (item) => {
+  const card = new Card({ name: item.name, link: item.link, selector: '.list-item-template', handleCardClick: (name, link) => {
+    popupWithImage.open(name, link);
+  }
+});
   const element = card.generateCard();
-
   return element;
 }
 
 const cardList = new Section({ data: cards, renderer: (item) => {
-  const card = new Card(item.name, item.link, '.list-item-template', handleCardClick);
-  const element = card.generateCard();
-  cardList.setItem(element);
+  cardList.setItem(createCard(item));
 }}, ".element");
 cardList.renderItems();
 
@@ -36,19 +33,12 @@ validationCard.enableValidation();
 
 const userInfo = new UserInfo ({name: ".profile__name", text: ".profile__text"});
 
-const popupWithСard = new PopupWithForm({ popupSelector: ".popup_add-form", handleCardFormSubmit: () => {
-    const newCardName = inputTextCard.value;
-    const newCardUrl = inputUrlCard.value;
-  
-    list.prepend(createCard({
-      name: newCardName,
-      link: newCardUrl
-    }));
-  popupWithСard.close();
-  validationCard.resetValidation(); 
+const popupWithCard = new PopupWithForm({ popupSelector: ".popup_add-form", handleCardFormSubmit: (card) => {
+  cardList.setItem(createCard(card));
+  popupWithCard.close();
 }
 });
-popupWithСard.setEventListener();
+popupWithCard.setEventListener();
 
 const popupWithProfile = new PopupWithForm({ popupSelector: ".popup_edit-form", handleCardFormSubmit: (text) => {
   userInfo.setUserInfo(text)
@@ -59,6 +49,7 @@ popupWithProfile.setEventListener();
 
 
 openProfileBtn.addEventListener("click", () => {
+  validationCard.resetValidation(); 
   popupWithProfile.open();
   const {name, text} = userInfo.getUserInfo();
   nameInput.value = name;
@@ -66,5 +57,6 @@ openProfileBtn.addEventListener("click", () => {
 });
 
 openCardBtn.addEventListener("click", () => {
-  popupWithСard.open();
+  validationCard.resetValidation(); 
+  popupWithCard.open();
 });

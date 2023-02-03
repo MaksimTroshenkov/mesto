@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(name, link, selector, handleCardClick) {
+  constructor({ name, link, selector, handleCardClick }) {
     this._name = name;
     this._link = link;
     this._selector = selector;
@@ -29,6 +29,7 @@ export default class Card {
 
   _removeElement() {
     this._element.remove();
+    this._element = null;
   }
 
   _setEventListener() {
