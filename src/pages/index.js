@@ -130,7 +130,7 @@ popupWithProfile.setEventListeners();
 const popupWithImage = new PopupWithImage(".popup_image");
 popupWithImage.setEventListeners();
 const popupWithConfirmation = new PopupWithConfirmation({
-  popupSelector: '.popup__delete',
+  popupSelector: '.popup_delete-card',
   deleteCard: card => {
     deleteCard(card);
 }});
