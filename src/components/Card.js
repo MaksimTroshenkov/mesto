@@ -10,7 +10,7 @@ export default class Card {
     this._likes = cardItem.likes;
     this._owner = cardItem.owner;
     this.cardId = cardItem._id;
-    this._userId = dataUser.userInfo._Id;
+    this._userId = dataUser.userInfo._id;
   }
 
 
@@ -49,7 +49,7 @@ export default class Card {
     return this._element;
   }
 
-  isLiked() {
+  isMyLiked() {
     return Boolean(this._likes.find(item => item._id === this._userId));
   }
 
@@ -57,10 +57,12 @@ export default class Card {
     if(this._likes.length > 0) {
       this._cardLikeNumber.textContent = this._likes.length;
     }
-    if(this.isLiked()) {
+    if(this.isMyLiked()) {
       this._cardLikeBtn.classList.add('element__button_active');
+      this._likes.length ? this._cardLikeNumber.textContent = this._likes.length : this._cardLikeNumber.textContent = "";
     } else {
       this._cardLikeBtn.classList.remove('element__button_active');
+      this._likes.length ? this._cardLikeNumber.textContent = this._likes.length : this._cardLikeNumber.textContent = "";
     }
   }
 

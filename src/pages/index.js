@@ -6,7 +6,8 @@ import {
   popupBtnAvatar, 
   openCardBtn, 
   textInput, 
-  nameInput } from "../utils/constants.js";
+  nameInput, 
+  enableValidation, } from "../utils/constants.js";
 
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -14,9 +15,8 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
-//import FormValidator from "../components/FormValidator.js";
+import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
-import { data } from 'autoprefixer';
 
 // API OOP
 
@@ -99,7 +99,7 @@ const deleteLikeCard = card => {
 const editAvatar = fieldObj => {
   api.editAvatar(fieldObj)
   .then(() => {
-    userInfo.setUserInfo(fieldObj);
+    userInfo.setUserAvatar(fieldObj);
     popupWithAvatar.close();
   })
   .catch(err => console.log(err))
@@ -154,7 +154,7 @@ const createCard = item => {
       popupWithConfirmation.setCardDelete(card);
     },
     handleSetLikes: () => {
-      if(!card.isLiked()) {
+      if(!card.isMyLiked()) {
         likeCard(card);
       } else {
         deleteLikeCard(card);
@@ -185,13 +185,13 @@ const popupWithAvatar = new PopupWithForm({
   popupWithAvatar.renderLoading(true);
 }});
 popupWithAvatar.setEventListeners();
+//валидация форм
+const validationProfile = new FormValidator(enableValidation, popupProfileForm); 
+validationProfile.enableValidation(); 
+ 
+const validationCard = new FormValidator(enableValidation, popupFormCard); 
+validationCard.enableValidation(); 
 // события
 openProfileBtn.addEventListener('click', openPopupProfile);
 openCardBtn.addEventListener('click', openPopupCard);
 popupBtnAvatar.addEventListener('click', openPopupAvatar);
-
-/* const validationProfile = new FormValidator(enableValidation, popupProfileForm);
-validationProfile.enableValidation();
-
-const validationCard = new FormValidator(enableValidation, popupFormCard);
-validationCard.enableValidation(); */
