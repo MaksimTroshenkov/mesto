@@ -7,7 +7,7 @@ import {
   openCardBtn, 
   textInput, 
   nameInput, 
-  enableValidation, } from "../utils/constants.js";
+  setting, } from "../utils/constants.js";
 
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -29,14 +29,8 @@ const api = new Api({
 });
 
 // Функции для взаимодействия с сервером
-
 // Информация профиля и создание карточек
 
-const userInfo = new UserInfo({
-  userName: '.profile__name', 
-  userDesc: '.profile__text',
-  avatar: '.profile__avatar'
-});
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
     userInfo.setUserInfo(user);
@@ -45,6 +39,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   })
   .catch((err) => {
     console.log(err);
+  });
+
+  const userInfo = new UserInfo({
+    userName: '.profile__name', 
+    userDesc: '.profile__text',
+    avatar: '.profile__avatar'
   });
 // функция редактирования профиля
 const editUserInfo = fieldObj => {
@@ -117,12 +117,7 @@ const openPopupProfile = () => {
   nameInput.value = usersInfo.name;
   textInput.value = usersInfo.desc;
 }
-const openPopupCard = () => {
-  popupWithCard.open();
-}
-const openPopupAvatar = () => {
-  popupWithAvatar.open();
-}
+
 // profile edit
 const popupWithProfile = new PopupWithForm({
   popupSelector: '.popup_edit-form', 
@@ -186,12 +181,24 @@ const popupWithAvatar = new PopupWithForm({
 }});
 popupWithAvatar.setEventListeners();
 //валидация форм
-const validationProfile = new FormValidator(enableValidation, popupProfileForm); 
-validationProfile.enableValidation(); 
- 
-const validationCard = new FormValidator(enableValidation, popupFormCard); 
-validationCard.enableValidation(); 
+const formValidators = {};
+const enableValidation = (setting) => {
+  const formList = Array.from(document.querySelectorAll(setting.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(setting, formElement)
+    const formName = formElement.getAttribute('name');
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  })
+}
+enableValidation(setting);
 // события
 openProfileBtn.addEventListener('click', openPopupProfile);
-openCardBtn.addEventListener('click', openPopupCard);
-popupBtnAvatar.addEventListener('click', openPopupAvatar);
+openCardBtn.addEventListener('click', () => {
+  formValidators['card-form'].resetValidation();
+  popupWithCard.open();
+});
+popupBtnAvatar.addEventListener('click', () => {
+  formValidators['avatar'].resetValidation();
+  popupWithAvatar.open();
+});

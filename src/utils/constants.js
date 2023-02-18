@@ -1,4 +1,4 @@
-const enableValidation = {
+const setting = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -16,4 +16,4 @@ const textInput = document.querySelector(".popup__input_type_text");
 const dataUser = {};
 
 
-export {dataUser, openProfileBtn, popupBtnAvatar, openCardBtn, textInput, nameInput, enableValidation};
+export {dataUser, openProfileBtn, popupBtnAvatar, openCardBtn, textInput, nameInput, setting};
