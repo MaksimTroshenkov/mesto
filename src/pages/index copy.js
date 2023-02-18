@@ -16,7 +16,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 //import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
-import { data } from 'autoprefixer';
 
 // API OOP
 
@@ -32,16 +31,13 @@ const api = new Api({
 
 // Информация профиля и создание карточек
 
-const userInfo = new UserInfo({
-  userName: '.profile__name', 
-  userDesc: '.profile__text',
-  avatar: '.profile__avatar'
-});
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
-    userInfo.setUserInfo(user);
-    dataUser.userInfo = user;
-    section.renderItems(cards);
+    //setUserInfo(user);
+    //userInfo.setUserAvatar(user.avatar);
+    //dataUser.userInfo = user;
+    //section.renderItems(cards);
+    console.log(user)
   })
   .catch((err) => {
     console.log(err);
@@ -50,7 +46,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 const editUserInfo = fieldObj => {
   api.editUserInfo(fieldObj)
   .then(res => {
-    userInfo.setUserInfo(res);
+    setUserInfo(res);
     popupWithProfile.close();
   })
   .catch(err => console.log(err))
@@ -97,9 +93,9 @@ const deleteLikeCard = card => {
 }
 // функция изменения аватара
 const editAvatar = fieldObj => {
-  api.editAvatar(fieldObj)
+  api.editAvatar(fieldObj.edit)
   .then(() => {
-    userInfo.setUserInfo(fieldObj);
+    userInfo.setUserAvatar(fieldObj.edit);
     popupWithAvatar.close();
   })
   .catch(err => console.log(err))
@@ -108,7 +104,14 @@ const editAvatar = fieldObj => {
   });
 }
 // popup open/close
-
+const userInfo = new UserInfo({
+  userName: '.profile__name', 
+  userDesc: '.profile__text',
+  avatar: '.profile__avatar'
+});
+const setUserInfo = obj => {
+  userInfo.setUserInfo(obj);
+}
 const openPopupProfile = () => {
   popupWithProfile.open();
 
@@ -142,9 +145,7 @@ const popupWithConfirmation = new PopupWithConfirmation({
 popupWithConfirmation.setEventListeners();
 
 const createCard = item => {
-  const card = new Card( 
-    item, 
-    '.list-item-template', {
+  const card = new Card(item, '.list-item-template', {
     dataUser,  
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
@@ -154,7 +155,7 @@ const createCard = item => {
       popupWithConfirmation.setCardDelete(card);
     },
     handleSetLikes: () => {
-      if(!card.isLiked()) {
+      if(!card.isCardLiked()) {
         likeCard(card);
       } else {
         deleteLikeCard(card);
@@ -165,8 +166,7 @@ const createCard = item => {
   return element;
 };
 
-const section = new Section({ 
-  renderer: (item) => {
+const section = new Section({ renderer: (item) => {
   section.addItem(createCard(item));
 }}, ".element");
 // popup добавления карточки пользователем
